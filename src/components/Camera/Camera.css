@@ -1,0 +1,81 @@
+/* src/pages/CameraPage.css */
+
+/* Essential for showing the camera preview behind Ionic content */
+ion-content.camera-content {
+  --background: transparent;
+  width: 100%;
+  height: 100%;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+#cameraPreview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Below your overlay and controls */
+  display: none; /* Hidden by default, shown when camera starts */
+}
+
+/* Style for captured image preview (optional) */
+.captured-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3; /* Above everything when active */
+}
+
+.gradient-corners-box {
+  position: relative;
+  width: 75%;
+  height: 70%;
+  background-color: #f0f0f0;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  color: #333;
+  z-index: 3;
+
+  /* --- THE MAGIC HERE --- */
+  background:
+    /* Top-left corner */ linear-gradient(
+        to right,
+        #007bff 2px,
+        transparent 2px
+      )
+      0 0,
+    /* horizontal top */
+      linear-gradient(to bottom, #007bff 2px, transparent 2px) 0 0,
+    /* vertical left */ /* Top-right corner */
+      linear-gradient(to left, #007bff 2px, transparent 2px) 100% 0,
+    /* horizontal top */
+      linear-gradient(to bottom, #007bff 2px, transparent 2px) 100% 0,
+    /* vertical right */ /* Bottom-left corner */
+      linear-gradient(to right, #007bff 2px, transparent 2px) 0 100%,
+    /* horizontal bottom */
+      linear-gradient(to top, #007bff 2px, transparent 2px) 0 100%,
+    /* vertical left */ /* Bottom-right corner */
+      linear-gradient(to left, #007bff 2px, transparent 2px) 100% 100%,
+    /* horizontal bottom */
+      linear-gradient(to top, #007bff 2px, transparent 2px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: 50px 50px; /* Adjust this to control corner length */
+  /* For precise control over each segment's length: */
+  /* background-size: 50px 2px, 2px 50px, // TL
+                  50px 2px, 2px 50px, // TR
+                  50px 2px, 2px 50px, // BL
+                  50px 2px, 2px 50px; // BR */
+}
