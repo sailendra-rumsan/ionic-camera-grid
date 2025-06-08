@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IonContent, IonFab, IonFabButton, IonIcon } from "@ionic/react";
-import { camera } from "ionicons/icons";
+import { camera, close } from "ionicons/icons";
 import {
   CameraPreview,
   CameraPreviewOptions,
@@ -86,35 +86,51 @@ const Camera: React.FC = () => {
   };
 
   return (
-    <IonContent className="camera-content">
-      {" "}
-      {/* Add class for styling */}
-      {/* This div will hold the camera preview, it must have an ID for the plugin */}
-      <div id="cameraPreview" ref={cameraPreviewRef}></div>
-      {/* Your grid overlay */}
-      <div className="gradient-corners-box"></div>
-      {/* Capture button */}
-      <IonFab vertical="bottom" horizontal="center" slot="fixed">
-        <IonFabButton onClick={takePhoto}>
-          <IonIcon icon={camera}></IonIcon>
-        </IonFabButton>
-      </IonFab>
-      {/* Display captured image (optional) */}
-      {capturedImage && (
-        <div className="captured-image-container">
-          <img
-            src={capturedImage}
-            alt="Captured"
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
-          <IonFab vertical="bottom" horizontal="end" slot="fixed">
-            <IonFabButton onClick={() => setCapturedImage(undefined)}>
-              <IonIcon name="close"></IonIcon>
-            </IonFabButton>
-          </IonFab>
-        </div>
-      )}
-    </IonContent>
+    <>
+      <IonContent className="camera-content">
+        {" "}
+        {/* Add class for styling */}
+        {/* This div will hold the camera preview, it must have an ID for the plugin */}
+        {!capturedImage && (
+          <>
+            <div id="cameraPreview" ref={cameraPreviewRef}></div>
+
+            <div className="gradient-corners-box"></div>
+            {/* Capture button */}
+            <IonFab
+              vertical="bottom"
+              horizontal="center"
+              slot="fixed"
+              className="capture-button"
+            >
+              <IonFabButton onClick={takePhoto}>
+                <IonIcon icon={camera}></IonIcon>
+              </IonFabButton>
+            </IonFab>
+          </>
+        )}
+        {/* Display captured image (optional) */}
+        {capturedImage && (
+          <div className="captured-image-container">
+            <img
+              src={capturedImage}
+              alt="Captured"
+              style={{ maxWidth: "100%", height: "auto" }}
+            />
+            <IonFab
+              vertical="top"
+              horizontal="end"
+              slot="fixed"
+              className="close-button"
+            >
+              <IonFabButton onClick={() => setCapturedImage(undefined)}>
+                <IonIcon icon={close}></IonIcon>
+              </IonFabButton>
+            </IonFab>
+          </div>
+        )}
+      </IonContent>
+    </>
   );
 };
 

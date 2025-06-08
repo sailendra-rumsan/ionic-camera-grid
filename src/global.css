@@ -1,0 +1,5 @@
+body,
+ion-content {
+  background-color: transparent;
+  --background: transparent;
+}

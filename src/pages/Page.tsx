@@ -18,7 +18,7 @@ const Page: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Camera</IonTitle>
+          <IonTitle>Cameras</IonTitle>
         </IonToolbar>
       </IonHeader>
 

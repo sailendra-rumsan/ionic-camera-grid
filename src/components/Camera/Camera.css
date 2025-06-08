@@ -2,6 +2,7 @@
 
 /* Essential for showing the camera preview behind Ionic content */
 ion-content.camera-content {
+  position: relative;
   --background: transparent;
   width: 100%;
   height: 100%;
@@ -9,6 +10,11 @@ ion-content.camera-content {
   --padding-bottom: 0;
   --padding-start: 0;
   --padding-end: 0;
+}
+
+.capture-button {
+  position: absolute;
+  bottom: 15%;
 }
 
 #cameraPreview {
@@ -19,6 +25,10 @@ ion-content.camera-content {
   height: 100%;
   z-index: 1; /* Below your overlay and controls */
   display: none; /* Hidden by default, shown when camera starts */
+}
+
+.close-button {
+  position: absolute;
 }
 
 /* Style for captured image preview (optional) */
@@ -37,7 +47,7 @@ ion-content.camera-content {
 
 .gradient-corners-box {
   position: relative;
-  width: 75%;
+  width: 80%;
   height: 70%;
   background-color: #f0f0f0;
   margin: 20px auto;
